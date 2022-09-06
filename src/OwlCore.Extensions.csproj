@@ -19,10 +19,11 @@
 		<Description>A collection of exceptionally useful extension methods.</Description>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageIcon>logo.png</PackageIcon>
+		<PackageProjectUrl>https://github.com/Arlodotexe/OwlCore.Extensions</PackageProjectUrl>
 		<PackageReleaseNotes>
 --- 0.0.0 ---
 [New]
-Initial separated package release of OwlCore.Extensions. Transferred from OwlCore 0.0.72.
+Initial separated package release of OwlCore.Extensions. Transferred from OwlCore 0.1.0.
 
 [Breaking]
 The Object.DeepCopy() extension method has been removed. It's slow and architecturally unfit for use.
