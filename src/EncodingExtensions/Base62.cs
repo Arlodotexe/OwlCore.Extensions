@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using System.Text;
-using OwlCore.IO.Streams;
+using CommunityToolkit.Diagnostics;
 
 namespace OwlCore.Extensions
 {
@@ -9,7 +9,7 @@ namespace OwlCore.Extensions
     /// </summary>
     public static partial class EncodingExtensions
     {
-        private static string Base62CodingSpace = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        private static readonly string Base62CodingSpace = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
         /// <summary>
         /// Convert a byte array to a Base62 encoded string.
@@ -19,22 +19,26 @@ namespace OwlCore.Extensions
         public static string ToBase62(this byte[] original)
         {
             var sb = new StringBuilder();
-            var stream = new BitStream(original);                     // Set up the BitStream
-            var read = new byte[1];                                   // Only read 6-bit at a time
+            var stream = new MemoryStream(original);
+            var read = new byte[1];
 
             while (true)
             {
                 read[0] = 0;
-                var length = stream.Read(read, 0, 6);  // Try to read 6 bits
+                // Try to read 6 bits
+                var length = stream.Read(read, 0, 6);
 
-                if (length == 6)                                      // Not reaching the end
+                // Not reaching the end
+                if (length == 6)
                 {
                     switch (read[0] >> 3)
                     {
                         // First 5-bit is 11111
                         case 0x1f:
                             sb.Append(Base62CodingSpace[61]);
-                            stream.Seek(-1, SeekOrigin.Current);// Leave the 6th bit to next group
+
+                            // Leave the 6th bit to next group
+                            stream.Seek(-1, SeekOrigin.Current);
                             break;
                         // First 5-bit is 11110
                         case 0x1e:
@@ -47,11 +51,14 @@ namespace OwlCore.Extensions
                             break;
                     }
                 }
-                else if (length == 0)                                 // Reached the end completely
+
+                // Reached the end completely
+                else if (length == 0)
                 {
                     break;
                 }
-                else                                                  // Reached the end with some bits left
+                // Reached the end with some bits left
+                else
                 {
                     // Padding 0s to make the last bits to 6 bit
                     sb.Append(Base62CodingSpace[read[0] >> (8 - length)]);
@@ -71,8 +78,8 @@ namespace OwlCore.Extensions
             // Character count
             var count = 0;
 
-            // Set up the BitStream
-            var stream = new BitStream(base62.Length * 6 / 8);
+            // Set up the Stream
+            var stream = new MemoryStream(base62.Length * 6 / 8);
 
             foreach (char c in base62)
             {
@@ -112,9 +119,11 @@ namespace OwlCore.Extensions
             }
 
             // Dump out the bytes
-            byte[] result = new byte[stream.Position / 8];
+            var result = new byte[stream.Position / 8];
             stream.Seek(0, SeekOrigin.Begin);
-            stream.Read(result, 0, result.Length * 8);
+            var read = stream.Read(result, 0, result.Length * 8);
+
+            Guard.IsEqualTo(read, result.Length * 8);
             return result;
         }
     }

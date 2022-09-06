@@ -1,8 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OwlCore.Events;
-using OwlCore.Extensions;
-using System;
-using System.Linq;
+﻿using OwlCore.ComponentModel;
 
 namespace OwlCore.Extensions.Tests
 {

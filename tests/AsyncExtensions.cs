@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OwlCore.Extensions;
 using System;
 using System.Linq;
 using System.Threading;

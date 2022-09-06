@@ -23,6 +23,13 @@
 --- 0.0.0 ---
 [New]
 Initial separated package release of OwlCore.Extensions. Transferred from OwlCore 0.0.72.
+
+[Breaking]
+The Object.DeepCopy() extension method has been removed. It's slow and architecturally unfit for use.
+OwlCore.Validation.Mime.MimeTypeMap functionality has been moved to extension methods under OwlCore.Extensions.StringExtensions.
+
+[Fix]
+OwlCore.Extensions.GenericExtensions.Cast no longer prevents System.Linq.Enumerable.Cast from being usable when OwlCore.Extensions is referenced.
 		</PackageReleaseNotes>
 		<DebugType>embedded</DebugType>
 		<NeutralLanguage>en</NeutralLanguage>
@@ -57,6 +64,7 @@ Initial separated package release of OwlCore.Extensions. Transferred from OwlCor
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
 		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
 		<PackageReference Include="CommunityToolkit.Diagnostics" Version="8.0.0" />
+		<PackageReference Include="OwlCore.ComponentModel" Version="0.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
