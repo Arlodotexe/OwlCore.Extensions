@@ -16,13 +16,13 @@
 		<Author>Arlo Godfrey</Author>
 		<Version>0.0.0</Version>
 		<Product>OwlCore</Product>
-		<Description></Description>
+		<Description>A collection of exceptionally useful extension methods.</Description>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageReleaseNotes>
 --- 0.0.0 ---
 [New]
-Initial release of OwlCore.Template.
+Initial separated package release of OwlCore.Extensions. Transferred from OwlCore 0.0.72.
 		</PackageReleaseNotes>
 		<DebugType>embedded</DebugType>
 		<NeutralLanguage>en</NeutralLanguage>
@@ -56,6 +56,7 @@ Initial release of OwlCore.Template.
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
 		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
+		<PackageReference Include="CommunityToolkit.Diagnostics" Version="8.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

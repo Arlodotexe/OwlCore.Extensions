@@ -13,11 +13,10 @@
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
     <PackageReference Include="coverlet.collector" Version="3.1.2" />
-    <PackageReference Include="OwlCore" Version="0.0.71" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\OwlCore.Template.csproj" />
+    <ProjectReference Include="..\src\OwlCore.Extensions.csproj" />
   </ItemGroup>
 
 </Project>
