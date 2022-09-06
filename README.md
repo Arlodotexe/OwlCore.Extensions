@@ -2,12 +2,24 @@
 
 A collection of exceptionally useful extension methods.
 
-
-
 ## Featuring:
-- x
-- y
-- z
+- **`IEnumerable{T}.InParallel`** - Runs a specific task in parallel from a list of items.
+  -  ```cs
+      await items.InParallel(x => x.InitAsync()).
+      ```
+- **`SynchronizationContext.PostAsync`** - Asynchronously wait for a SynchronizationContext.Post call to finish.
+- **`CancellationToken.WhenCancelled`** - Await the cancellation of a token using a task.
+- **`DateTime.ChangeYear`**, **`DateTime.ChangeMonth`**, **`DateTime.ChangeDay`** - Return a new DateTime with a changed day, month or year.
+- **`IEnumerable{T}.DistinctBy`** - .NET Standard 2.0 support for DistinctBy.
+- **`IEnumerable{T}.PruneNull`** - Quickly remove null values and return a non-nullable cast.
+- **`ObservableCollection.Sort`** - Sort an ObservableCollection using a Comparer{T}.
+- **`T[].Shuffle`**, **`T[].Unshuffle`** - Shuffles the given array in place using a slightly modified fisher-yates algorithm, ensuring that no item remains in the same position.
+  - Shuffling returns a "shuffle map" that can be used to map items to their original positions and `Unshuffle()` the collection, even if the order of items is changed while shuffled.
+- **`IList{T}.InsertOrAdd`**, **`IList{T}.InsertOrAddRange`** - Inserts one or more items into an IList{T}, or adds if the index is the size of the list.
+- **`IList{T}.Pop`** - Removes and returns the last item in the provided list.
+- **`Stream.ReadToNull`** - Reads a sequence of bytes from a stream until a null byte is read.
+- **`Stream.ToBytes`**, **`Stream.ToBytesAsync`** - Converts a Stream to a byte array.
+- ... and more not listed here.
 
 ## Install
 
@@ -20,9 +32,10 @@ Or using [dotnet](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet)
     > dotnet add package OwlCore.Extensions
 
 ## Usage
+Simply install the package, add a `using` statement, and start using the extension methods.
 
 ```cs
-var test = new Thing();
+using OwlCore.Extensions;
 ```
 
 ## Financing
