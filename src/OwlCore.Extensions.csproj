@@ -14,13 +14,21 @@
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 
 		<Author>Arlo Godfrey</Author>
-		<Version>0.0.0</Version>
+		<Version>0.1.0</Version>
 		<Product>OwlCore</Product>
 		<Description>A collection of exceptionally useful extension methods.</Description>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageProjectUrl>https://github.com/Arlodotexe/OwlCore.Extensions</PackageProjectUrl>
 		<PackageReleaseNotes>
+--- 0.1.0
+[Breaking]
+CultureInfoExtensions.FromIso636_3(string) has been moved to CultureInfoExtensions.CultureInfoFromThreeLetterIso(string).
+
+[Fix]
+CultureInfoExtensions.CultureInfoFromThreeLetterIso(string) is now a proper extension method.
+OwlCore.Extensions.GenericExtensions.Cast no longer prevents System.Linq.Enumerable.Cast from being usable when OwlCore.Extensions is referenced.
+
 --- 0.0.0 ---
 [New]
 Initial separated package release of OwlCore.Extensions. Transferred from OwlCore 0.1.0.
@@ -29,11 +37,6 @@ Initial separated package release of OwlCore.Extensions. Transferred from OwlCor
 The Object.DeepCopy() extension method has been removed. It's slow and architecturally unfit for use.
 ArrayExtensions.Traverse has been removed, as it was only needed for DeepCopy.
 OwlCore.Validation.Mime.MimeTypeMap functionality has been moved to extension methods under StringExtensions.
-CultureInfoExtensions.FromIso636_3(string) has been moved to CultureInfoExtensions.CultureInfoFromThreeLetterIso(string).
-
-[Fix]
-CultureInfoExtensions.CultureInfoFromThreeLetterIso(string) is now a proper extension method.
-OwlCore.Extensions.GenericExtensions.Cast no longer prevents System.Linq.Enumerable.Cast from being usable when OwlCore.Extensions is referenced.
 		</PackageReleaseNotes>
 		<DebugType>embedded</DebugType>
 		<NeutralLanguage>en</NeutralLanguage>
