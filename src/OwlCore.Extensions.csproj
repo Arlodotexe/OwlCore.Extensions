@@ -14,14 +14,18 @@
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 
 		<Author>Arlo Godfrey</Author>
-		<Version>0.1.0</Version>
+		<Version>0.2.0</Version>
 		<Product>OwlCore</Product>
 		<Description>A collection of exceptionally useful extension methods.</Description>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageProjectUrl>https://github.com/Arlodotexe/OwlCore.Extensions</PackageProjectUrl>
 		<PackageReleaseNotes>
---- 0.1.0
+--- 0.2.0 ---
+[Breaking]
+object.Cast has been removed due to excessive interference with Linq. To migrate away from this extension method, use an explicit cast instead.
+
+--- 0.1.0 ---
 [Breaking]
 CultureInfoExtensions.FromIso636_3(string) has been moved to CultureInfoExtensions.CultureInfoFromThreeLetterIso(string).
 
