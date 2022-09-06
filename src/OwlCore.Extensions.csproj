@@ -22,7 +22,7 @@
 		<PackageReleaseNotes>
 --- 0.0.0 ---
 [New]
-Initial separated package release of OwlCore.Extensions. Transferred from OwlCore 0.0.72.
+Initial separated package release of OwlCore.Extensions. Transferred from OwlCore 0.1.0.
 		</PackageReleaseNotes>
 		<DebugType>embedded</DebugType>
 		<NeutralLanguage>en</NeutralLanguage>
