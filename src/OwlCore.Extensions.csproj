@@ -27,9 +27,12 @@ Initial separated package release of OwlCore.Extensions. Transferred from OwlCor
 
 [Breaking]
 The Object.DeepCopy() extension method has been removed. It's slow and architecturally unfit for use.
-OwlCore.Validation.Mime.MimeTypeMap functionality has been moved to extension methods under OwlCore.Extensions.StringExtensions.
+ArrayExtensions.Traverse has been removed, as it was only needed for DeepCopy.
+OwlCore.Validation.Mime.MimeTypeMap functionality has been moved to extension methods under StringExtensions.
+CultureInfoExtensions.FromIso636_3(string) has been moved to CultureInfoExtensions.CultureInfoFromThreeLetterIso(string).
 
 [Fix]
+CultureInfoExtensions.CultureInfoFromThreeLetterIso(string) is now a proper extension method.
 OwlCore.Extensions.GenericExtensions.Cast no longer prevents System.Linq.Enumerable.Cast from being usable when OwlCore.Extensions is referenced.
 		</PackageReleaseNotes>
 		<DebugType>embedded</DebugType>
