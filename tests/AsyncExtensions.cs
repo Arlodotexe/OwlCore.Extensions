@@ -1,14 +1,47 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace OwlCore.Extensions.Tests
+﻿namespace OwlCore.Extensions.Tests
 {
     [TestClass]
     public class AsyncExtensions
     {
+        [TestMethod, Timeout(1000)]
+        public async Task WhenCancelled_SimpleCancellation()
+        {
+            var cancellationTokenSource = new CancellationTokenSource(100);
+
+            await cancellationTokenSource.Token.WhenCancelledAsync(CancellationToken.None);
+
+            Assert.IsTrue(cancellationTokenSource.IsCancellationRequested);
+        }
+
+        [TestMethod, Timeout(1000)]
+        public async Task WhenCancelled_WithSelfCancellation()
+        {
+            var cancellationTokenSource = new CancellationTokenSource();
+            var selfCancellationTokenSource = new CancellationTokenSource(100);
+
+            await Assert.ThrowsExceptionAsync<TaskCanceledException>(() => cancellationTokenSource.Token.WhenCancelledAsync(selfCancellationTokenSource.Token));
+
+            Assert.IsFalse(cancellationTokenSource.IsCancellationRequested);
+            Assert.IsTrue(selfCancellationTokenSource.IsCancellationRequested);
+        }
+
+        [TestMethod]
+        [DataRow(1, 1), DataRow(5, 1), DataRow(5, 3)]
+        [Timeout(1000)]
+        public async Task SemaphoreSlimDisposableWaitAsyncTest(int maxHandleCount, int initialHandleCount)
+        {
+            using var semaphore = new SemaphoreSlim(initialHandleCount, maxHandleCount);
+
+            using (await semaphore.DisposableWaitAsync())
+            {
+                Assert.AreEqual(semaphore.CurrentCount, initialHandleCount - 1);
+                await Task.Delay(15);
+                Assert.AreEqual(semaphore.CurrentCount, initialHandleCount - 1);
+            }
+
+            Assert.AreEqual(semaphore.CurrentCount, initialHandleCount);
+        }
+
         [DataRow(null)]
         [DataRow(null, null)]
         [DataRow(null, null, null)]
@@ -257,28 +290,6 @@ namespace OwlCore.Extensions.Tests
             });
 
             Assert.IsTrue(isSuccess);
-        }
-
-        [TestMethod, Timeout(1000)]
-        public async Task WhenCancelled_SimpleCancellation()
-        {
-            var cancellationTokenSource = new CancellationTokenSource(100);
-
-            await cancellationTokenSource.Token.WhenCancelled(CancellationToken.None);
-
-            Assert.IsTrue(cancellationTokenSource.IsCancellationRequested);
-        }
-
-        [TestMethod, Timeout(1000)]
-        public async Task WhenCancelled_WithSelfCancellation()
-        {
-            var cancellationTokenSource = new CancellationTokenSource();
-            var selfCancellationTokenSource = new CancellationTokenSource(100);
-
-            await Assert.ThrowsExceptionAsync<TaskCanceledException>(() => cancellationTokenSource.Token.WhenCancelled(selfCancellationTokenSource.Token));
-
-            Assert.IsFalse(cancellationTokenSource.IsCancellationRequested);
-            Assert.IsTrue(selfCancellationTokenSource.IsCancellationRequested);
         }
     }
 }

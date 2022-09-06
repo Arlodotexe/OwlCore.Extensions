@@ -21,6 +21,11 @@
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageProjectUrl>https://github.com/Arlodotexe/OwlCore.Extensions</PackageProjectUrl>
 		<PackageReleaseNotes>
+--- 0.3.0 ---
+[New]
+OwlCore.Flow.EasySemaphore has been ported from the main package as an extension method, as OwlCore.Extensions.SemaphoreSlimExtensions.DisposableWaitAsync.
+OwlCore.Flow.WhenCancelled has been ported from the main package as an extension method, as OwlCore.Extensions.AsyncExtensions.WhenCancelledAsync.
+
 --- 0.2.0 ---
 [Breaking]
 object.Cast has been removed due to excessive interference with Linq. To migrate away from this extension method, use an explicit cast instead.
