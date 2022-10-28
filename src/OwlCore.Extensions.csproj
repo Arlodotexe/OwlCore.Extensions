@@ -14,13 +14,20 @@
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 
 		<Author>Arlo Godfrey</Author>
-		<Version>0.3.0</Version>
+		<Version>0.4.0</Version>
 		<Product>OwlCore</Product>
 		<Description>A collection of exceptionally useful extension methods.</Description>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageProjectUrl>https://github.com/Arlodotexe/OwlCore.Extensions</PackageProjectUrl>
 		<PackageReleaseNotes>
+--- 0.4.0 ---
+[New]
+Added AsyncEnumerableExtensions.Batch. Yield an IAsyncEnumerable in batches instead of yielding one at a time.
+
+[Breaking]
+Moved Zip extension from AsyncExtensions to new AsyncEnumerableExtensions.
+
 --- 0.3.0 ---
 [New]
 OwlCore.Flow.EasySemaphore has been ported from the main package as an extension method, as OwlCore.Extensions.SemaphoreSlimExtensions.DisposableWaitAsync.
