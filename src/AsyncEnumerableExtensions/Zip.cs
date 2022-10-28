@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 // ReSharper disable once CheckNamespace
 namespace OwlCore.Extensions
 {
-    public static partial class AsyncExtensions
+    public static partial class AsyncEnumerableExtensions
     {
         /// <summary>
         /// Zips together the enumeration of multiple <see cref="IAsyncEnumerable{T}"/>.
