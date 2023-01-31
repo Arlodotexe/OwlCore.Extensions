@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 
 // ReSharper disable once CheckNamespace
@@ -18,12 +19,20 @@ namespace OwlCore.Extensions
         public static byte[] ToBytes(this Stream input)
         {
             var originalPosition = input.Position;
-            input.Position = 0;
+            if (input.Position != 0)
+            {
+                if (input.CanSeek)
+                    input.Position = 0;
+                else
+                    throw new ArgumentException("Stream is not at position 0 and is unable to seek.", nameof(input));
+            }
 
             using var memStream = new MemoryStream();
             input.CopyTo(memStream);
 
-            input.Position = originalPosition;
+            if (input.CanSeek)
+                input.Position = originalPosition;
+
             return memStream.ToArray();
         }
 
@@ -36,12 +45,20 @@ namespace OwlCore.Extensions
         public static async Task<byte[]> ToBytesAsync(this Stream input)
         {
             var originalPosition = input.Position;
-            input.Position = 0;
+            if (input.Position != 0)
+            {
+                if (input.CanSeek)
+                    input.Position = 0;
+                else
+                    throw new ArgumentException("Stream is not at position 0 and is unable to seek.", nameof(input));
+            }
 
             using var memStream = new MemoryStream();
             await input.CopyToAsync(memStream);
 
-            input.Position = originalPosition;
+            if (input.CanSeek)
+                input.Position = originalPosition;
+
             return memStream.ToArray();
         }
     }

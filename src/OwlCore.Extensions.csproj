@@ -14,13 +14,20 @@
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 
 		<Author>Arlo Godfrey</Author>
-		<Version>0.4.0</Version>
+		<Version>0.5.0</Version>
 		<Product>OwlCore</Product>
 		<Description>A collection of exceptionally useful extension methods.</Description>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageProjectUrl>https://github.com/Arlodotexe/OwlCore.Extensions</PackageProjectUrl>
 		<PackageReleaseNotes>
+--- 0.5.0 ---
+[Fixed]
+StreamExtensions.ToBytes and StreamExtensions.ToBytesAsync will no longer attempt to seek when not needed. If seeking is needed but isn't supported by the underlying stream, these extensions will now throw.
+
+[New]
+Added EnumerableExtensions.Batch. Yield an IEnumerable in batches instead of yielding one at a time.
+
 --- 0.4.0 ---
 [New]
 Added AsyncEnumerableExtensions.Batch. Yield an IAsyncEnumerable in batches instead of yielding one at a time.
