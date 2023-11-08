@@ -18,10 +18,10 @@ namespace OwlCore.Extensions
         /// <returns><see cref="MethodReplacementState"/> that can be used to restore the method pointers.</returns>
         public static unsafe MethodReplacementState SwapPointerWith(this MethodInfo methodToReplace, MethodInfo methodToInject)
         {
-            #if DEBUG
+#if DEBUG
             RuntimeHelpers.PrepareMethod(methodToReplace.MethodHandle);
             RuntimeHelpers.PrepareMethod(methodToInject.MethodHandle);
-            #endif
+#endif
 
             MethodReplacementState state;
 
@@ -32,6 +32,9 @@ namespace OwlCore.Extensions
             }
             else
             {
+                if (methodToReplace.DeclaringType is null)
+                    throw new ArgumentNullException(nameof(methodToReplace.DeclaringType));
+
                 var index = (int)(((*(long*)tar) >> 32) & 0xFF);
                 var classStart = *(IntPtr*)(methodToReplace.DeclaringType.TypeHandle.Value + (IntPtr.Size == 4 ? 40 : 64));
                 tar = classStart + IntPtr.Size * index;

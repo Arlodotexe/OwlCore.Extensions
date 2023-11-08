@@ -746,7 +746,7 @@ namespace OwlCore.Extensions
         /// <param name="mimeType">The variable to store the MIME type.</param>
         /// <returns>The MIME type.</returns>
         /// <exception cref="ArgumentNullException" />
-        public static bool TryGetMimeType(this string str, out string mimeType)
+        public static bool TryGetMimeType(this string str, out string? mimeType)
         {
             if (str == null)
             {
@@ -780,7 +780,7 @@ namespace OwlCore.Extensions
         /// <param name="str">The filename or extension.</param>
         /// <returns>The MIME type.</returns>
         /// <exception cref="ArgumentNullException" />
-        public static string GetMimeType(this string str)
+        public static string? GetMimeType(this string str)
         {
             return TryGetMimeType(str, out var result) ? result : DefaultMimeType;
         }
@@ -805,7 +805,7 @@ namespace OwlCore.Extensions
                 throw new ArgumentException("Requested mime type is not valid: " + mimeType);
             }
 
-            if (_mappings.Value.TryGetValue(mimeType, out string extension))
+            if (_mappings.Value.TryGetValue(mimeType, out string? extension))
             {
                 return extension;
             }
