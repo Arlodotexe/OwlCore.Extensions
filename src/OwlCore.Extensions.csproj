@@ -14,13 +14,20 @@
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 
 		<Author>Arlo Godfrey</Author>
-		<Version>0.7.0</Version>
+		<Version>0.8.0</Version>
 		<Product>OwlCore</Product>
 		<Description>A collection of exceptionally useful extension methods.</Description>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageProjectUrl>https://github.com/Arlodotexe/OwlCore.Extensions</PackageProjectUrl>
 		<PackageReleaseNotes>
+--- 0.8.0 ---
+[Breaking]
+The Stream.ToBytes and Stream.ToBytesAsync method no longer try to read position or seek the stream internally. Instead, rewind the stream before using this extension method. This allows us to support non-seekable streams.
+
+[Improvements]
+Stream.ToBytesAsync now properly takes a cancellation token for the second parameter.
+
 --- 0.7.0 ---
 [Breaking]
 Inherited breaking changes from OwlCore.ComponentModel 0.7.0. Removes transient dependency on OwlCore.Storage.
@@ -117,6 +124,6 @@ OwlCore.Validation.Mime.MimeTypeMap functionality has been moved to extension me
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
     <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.2.2" />
-    <PackageReference Include="OwlCore.ComponentModel" Version="0.7.0" />
+    <PackageReference Include="OwlCore.ComponentModel" Version="0.8.0" />
 	</ItemGroup>
 </Project>
