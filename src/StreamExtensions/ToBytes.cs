@@ -32,7 +32,7 @@ namespace OwlCore.Extensions
         public static async Task<byte[]> ToBytesAsync(this Stream input, CancellationToken cancellationToken = default)
         {
             using var memStream = new MemoryStream();
-            await input.CopyToAsync(memStream, cancellationToken);
+            await input.CopyToAsync(memStream, 81920, cancellationToken);
             return memStream.ToArray();
         }
     }
