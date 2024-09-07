@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;net7.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<LangVersion>10.0</LangVersion>
 		<WarningsAsErrors>nullable</WarningsAsErrors>
@@ -14,13 +14,21 @@
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 
 		<Author>Arlo Godfrey</Author>
-		<Version>0.8.0</Version>
+		<Version>0.9.0</Version>
 		<Product>OwlCore</Product>
 		<Description>A collection of exceptionally useful extension methods.</Description>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageProjectUrl>https://github.com/Arlodotexe/OwlCore.Extensions</PackageProjectUrl>
 		<PackageReleaseNotes>
+--- 0.9.0 ---
+[Breaking]
+Updated from net7.0 to net8.0.
+Inherited breaking changes from OwlCore.ComponentModel 0.9.0.
+
+[Fix]
+Inherited fixes from OwlCore.ComponentModel 0.9.0.
+
 --- 0.8.0 ---
 [Breaking]
 The Stream.ToBytes and Stream.ToBytesAsync method no longer try to read position or seek the stream internally. Instead, rewind the stream before using this extension method. This allows us to support non-seekable streams.
@@ -123,7 +131,7 @@ OwlCore.Validation.Mime.MimeTypeMap functionality has been moved to extension me
 		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
-    <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.2.2" />
-    <PackageReference Include="OwlCore.ComponentModel" Version="0.8.0" />
+    	<PackageReference Include="CommunityToolkit.Diagnostics" Version="8.3.0" />
+    	<PackageReference Include="OwlCore.ComponentModel" Version="0.9.0" />
 	</ItemGroup>
 </Project>
