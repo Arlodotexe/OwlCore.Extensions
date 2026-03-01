@@ -14,13 +14,20 @@
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 
 		<Author>Arlo Godfrey</Author>
-		<Version>0.11.0</Version>
+		<Version>0.11.1</Version>
 		<Product>OwlCore</Product>
 		<Description>A collection of exceptionally useful extension methods.</Description>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageProjectUrl>https://github.com/Arlodotexe/OwlCore.Extensions</PackageProjectUrl>
 		<PackageReleaseNotes>
+--- 0.11.1 ---
+[Improvements]
+Updated Microsoft.Bcl.AsyncInterfaces to 10.0.3.
+Updated System.Linq.Async to 7.0.0. Removed the net10.0 exclusion condition - the LINQ async operators are not built into the runtime and must be referenced on all TFMs.
+Updated CommunityToolkit.Diagnostics to 8.4.0.
+Updated OwlCore.ComponentModel to 0.11.1.
+
 --- 0.11.0 ---
 [Improvements]
 Added net9.0 and net10.0 as target frameworks. System.Linq.Async and Microsoft.Bcl.AsyncInterfaces are now conditioned to exclude net10.0+, where these APIs are built into the runtime.
@@ -140,10 +147,10 @@ OwlCore.Validation.Mime.MimeTypeMap functionality has been moved to extension me
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net10.0'))" />
+        <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.3" Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net10.0'))" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
-		<PackageReference Include="System.Linq.Async" Version="6.0.1" Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net10.0'))" />
-    	<PackageReference Include="CommunityToolkit.Diagnostics" Version="8.3.1" />
-    	<PackageReference Include="OwlCore.ComponentModel" Version="0.11.0" />
+		<PackageReference Include="System.Linq.Async" Version="7.0.0" />
+        <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.4.0" />
+    	<PackageReference Include="OwlCore.ComponentModel" Version="0.11.1" />
 	</ItemGroup>
 </Project>
