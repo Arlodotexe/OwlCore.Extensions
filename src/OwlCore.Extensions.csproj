@@ -148,7 +148,7 @@ OwlCore.Validation.Mime.MimeTypeMap functionality has been moved to extension me
 
 	<ItemGroup>
         <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.3" Condition="!$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net10.0'))" />
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.301" PrivateAssets="All" />
 		<PackageReference Include="System.Linq.Async" Version="7.0.0" />
         <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.4.0" />
     	<PackageReference Include="OwlCore.ComponentModel" Version="0.11.1" />
